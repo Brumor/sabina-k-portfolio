@@ -1,4 +1,8 @@
-import { reducer } from "./reducer"
-import { combineReducers } from "redux"
+import { appReducer } from "./reducer"
+import { combineReducers, createStore } from "redux"
 
-export default combineReducers({ reducer })
+export const rootReducer = combineReducers({ appReducer })
+
+export default preloadedState => {
+  return createStore(rootReducer, preloadedState)
+}

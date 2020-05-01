@@ -1,14 +1,14 @@
 import { TOGGLE_DARKMODE, UPDATE_CATEGORIES_DATA } from "./actionTypes"
 
-import { IState } from "./stateTypes"
+import { AppState } from "./stateTypes"
 import { Reducer } from "redux"
 
-const initialState: IState = {
+const initialState: AppState = {
   isDarkMode: false,
   categories: null,
 }
 
-export const reducer: Reducer<IState> = (state = initialState, action) => {
+export const appReducer: Reducer<AppState> = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_DARKMODE:
       return { ...state, isDarkMode: action.payload }
