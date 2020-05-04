@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react"
 import { Link } from "gatsby"
-import { IState, Category } from "../state/stateTypes"
+import { IState, Category } from "../types"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

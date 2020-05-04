@@ -3,7 +3,7 @@ import {
   FETCH_CATEGORIES_DATA_SUCCESS,
   FETCH_CATEGORIES_DATA_FAILURE,
 } from "./actionTypes"
-import { Category } from "./stateTypes"
+import { Category } from "../types"
 
 export const toggleDarkMode = (isDarkMode: boolean) => ({
   type: TOGGLE_DARKMODE,

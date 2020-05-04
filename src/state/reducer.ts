@@ -4,7 +4,7 @@ import {
   FETCH_CATEGORIES_DATA_FAILURE,
 } from "./actionTypes"
 
-import { AppState } from "./stateTypes"
+import { AppState } from "../types"
 import { Reducer } from "redux"
 
 const initialState: AppState = {

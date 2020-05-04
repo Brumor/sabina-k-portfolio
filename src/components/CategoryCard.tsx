@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import "./layout.scss"
-import { Category } from "../state/stateTypes"
+import { Category } from "../types"
 import { Link } from "gatsby"
 
 interface IProps {

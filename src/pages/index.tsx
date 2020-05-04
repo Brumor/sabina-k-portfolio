@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import { connect } from "react-redux"
-import { IState, Category } from "../state/stateTypes"
+import { IState, Category } from "../types"
 import { Dispatch, bindActionCreators, AnyAction, CombinedState } from "redux"
 import { toggleDarkMode, fetchCategoriesData } from "../state/actions"
 import CategoryCard from "../components/CategoryCard"
