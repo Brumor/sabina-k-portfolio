@@ -25,6 +25,10 @@ const IndexPage: FC<IProps> = ({
 }) => {
   useEffect(() => {
     fetchCategoriesData()
+
+    const darkMode = JSON.parse(localStorage.getItem("darkMode"))
+
+    toggleDarkMode(darkMode as boolean)
   }, [])
 
   return (
