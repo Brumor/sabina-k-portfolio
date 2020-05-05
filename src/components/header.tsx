@@ -8,48 +8,47 @@ import { connect } from "react-redux"
 import { bindActionCreators, Dispatch, AnyAction } from "redux"
 import { IState } from "../types"
 import { toggleDarkMode } from "../state/actions"
+import { isMobile } from "../utils"
 
-const Header = ({ siteTitle, toggleDarkMode, isDarkMode }) => {
-  console.log({ styles })
-
-  return (
-    <header
-      className={`${styles.header} ${
-        isDarkMode ? styles.headerDark : styles.headerLight
-      }`}
-    >
-      <div className={styles.logoContainer}>
-        <h1>
-          <Link to="/">{siteTitle}</Link>
-        </h1>
-      </div>
-      <div className={styles.badgesContainer}>
-        <a href="https://www.instagram.com/sabinakovacevic/">
+const Header = ({ siteTitle, toggleDarkMode, isDarkMode }) => (
+  <header
+    className={`${styles.header} ${
+      isDarkMode ? styles.headerDark : styles.headerLight
+    }`}
+  >
+    <div className={styles.logoContainer}>
+      <h1>
+        <Link to="/">{siteTitle}</Link>
+      </h1>
+    </div>
+    <div className={styles.badgesContainer}>
+      <Link to="/about">About me</Link>
+      <Link to="/contact">Contact</Link>
+      <a href="https://www.instagram.com/sabinakovacevic/">
+        <FontAwesomeIcon
+          color={isDarkMode ? "#fcfcfc" : "#414141"}
+          style={{ width: isMobile ? 20 : 35, height: "auto" }}
+          icon={["fab", "instagram"]}
+        />
+      </a>
+      <a onClick={() => toggleDarkMode(!isDarkMode)}>
+        {isDarkMode ? (
           <FontAwesomeIcon
-            color={isDarkMode ? "#fcfcfc" : "#414141"}
-            style={{ width: 35, height: 35 }}
-            icon={["fab", "instagram"]}
+            color={"#fcfcfc"}
+            style={{ width: isMobile ? 20 : 30, height: "auto" }}
+            icon="sun"
           />
-        </a>
-        <a onClick={() => toggleDarkMode(!isDarkMode)}>
-          {isDarkMode ? (
-            <FontAwesomeIcon
-              color={"#fcfcfc"}
-              style={{ width: 30, height: 30 }}
-              icon="sun"
-            />
-          ) : (
-            <FontAwesomeIcon
-              color={"#414141"}
-              style={{ width: 30, height: 30 }}
-              icon="moon"
-            />
-          )}
-        </a>
-      </div>
-    </header>
-  )
-}
+        ) : (
+          <FontAwesomeIcon
+            color={"#414141"}
+            style={{ width: isMobile ? 20 : 30, height: "auto" }}
+            icon="moon"
+          />
+        )}
+      </a>
+    </div>
+  </header>
+)
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

@@ -5,14 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.scss"
+import { IState } from "../types"
+import { connect } from "react-redux"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isDarkMode }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,6 +24,16 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("body-dark")
+      document.body.classList.remove("body-light")
+    } else {
+      document.body.classList.add("body-light")
+      document.body.classList.remove("body-dark")
+    }
+  }, [isDarkMode])
 
   return (
     <>
@@ -34,11 +46,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <footer>© {new Date().getFullYear()}</footer>
       </div>
     </>
   )
@@ -48,4 +56,8 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+const mapStateToProps = ({ appReducer: { isDarkMode } }: IState) => ({
+  isDarkMode,
+})
+
+export default connect(mapStateToProps)(Layout)

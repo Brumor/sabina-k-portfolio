@@ -1,0 +1,40 @@
+$base-background-light: #fcfcfc;
+$text-light: #414141;
+
+$base-background-dark: rgba(10, 18, 30, 0.975);
+$text-dark: white;
+
+$breakpoint-tablet: 900px;
+$breakpoint-phone: 600px;
+
+html {
+  body.body-light {
+    background: $base-background-light;
+    color: $text-light;
+    a {
+      color: $text-light;
+    }
+  }
+
+  body.body-dark {
+    background: $base-background-dark;
+    color: $text-dark;
+    a {
+      color: $text-dark;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    transition: 0.5s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}

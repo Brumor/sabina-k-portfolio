@@ -1,0 +1,25 @@
+html body.body-light {
+  background: #fcfcfc;
+  color: #414141;
+}
+html body.body-light a {
+  color: #414141;
+}
+html body.body-dark {
+  background: rgba(10, 18, 30, 0.975);
+  color: #fff;
+}
+html body.body-dark a {
+  color: #fff;
+}
+html a {
+  text-decoration: none;
+  transition: 0.5s;
+}
+html a:hover {
+  opacity: 0.5;
+}
+html a:active {
+  opacity: 1;
+  transform: scale(1.05);
+}
