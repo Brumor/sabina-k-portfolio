@@ -9,11 +9,12 @@ import { IState, Category } from "../types"
 import { Dispatch, bindActionCreators, AnyAction, CombinedState } from "redux"
 import { toggleDarkMode, fetchCategoriesData } from "../state/actions"
 import CategoryCard from "../components/CategoryCard"
+import Loader from "../components/loader"
 
 interface IProps {
   fetchCategoriesData: () => void
   toggleDarkMode: (value: boolean) => void
-  categories: Category[]
+  categories: Category[] | null
   isDarkMode: boolean
 }
 
@@ -34,11 +35,11 @@ const IndexPage: FC<IProps> = ({
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      {categories &&
-        categories.map(category => <CategoryCard category={category} />)}
+      {categories ? (
+        categories.map(category => <CategoryCard category={category} />)
+      ) : (
+        <Loader />
+      )}
     </Layout>
   )
 }
