@@ -39,7 +39,6 @@ const IndexPage: FC<IProps> = ({
       <p>Now go build something great.</p>
       {categories &&
         categories.map(category => <CategoryCard category={category} />)}
-      <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )
 }
