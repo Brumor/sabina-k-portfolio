@@ -1,0 +1,45 @@
+@import "../styles/global.scss";
+
+.container {
+  .category-container {
+    position: relative;
+    text-align: center;
+    display: flex;
+    color: white;
+    max-height: 56vw;
+    overflow: hidden;
+    margin: 2rem 0px;
+    .background-picture {
+      width: 100%;
+      height: min-content;
+      max-height: inherit;
+    }
+
+    .title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      font-weight: 600;
+      font-size: 1.9rem;
+      border: 2px white solid;
+      padding: 0.8rem;
+      text-shadow: 1px 1px $base-background-dark;
+      transition: 0.5s;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      .background-picture {
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+      }
+
+      .title {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+  }
+}

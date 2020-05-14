@@ -1,8 +1,19 @@
 import { CombinedState } from "redux"
 
+export interface PictureMetadata {
+  width?: number
+  height?: number
+}
+
+export interface Picture {
+  name: string
+  url: string
+  metadata: PictureMetadata
+}
+
 export interface Category {
   name: string
-  pictures: string[]
+  pictures: Picture[]
 }
 
 export interface AppState {

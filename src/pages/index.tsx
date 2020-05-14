@@ -7,8 +7,8 @@ import SEO from "../components/seo"
 import { connect } from "react-redux"
 import { IState, Category } from "../types"
 import { Dispatch, bindActionCreators, AnyAction, CombinedState } from "redux"
-import { toggleDarkMode, fetchCategoriesData } from "../state/actions"
-import CategoryCard from "../components/CategoryCard"
+import { fetchCategoriesData } from "../state/actions"
+import Categories from "../components/categories"
 import Loader from "../components/loader"
 
 interface IProps {
@@ -18,40 +18,24 @@ interface IProps {
   isDarkMode: boolean
 }
 
-const IndexPage: FC<IProps> = ({
-  fetchCategoriesData,
-  categories,
-  toggleDarkMode,
-  isDarkMode,
-}) => {
+const IndexPage: FC<IProps> = ({ fetchCategoriesData, categories }) => {
   useEffect(() => {
     fetchCategoriesData()
-
-    const darkMode = JSON.parse(localStorage.getItem("darkMode"))
-
-    toggleDarkMode(darkMode as boolean)
   }, [])
 
   return (
     <Layout>
       <SEO title="Home" />
-      {categories ? (
-        categories.map(category => <CategoryCard category={category} />)
-      ) : (
-        <Loader />
-      )}
+      {categories ? <Categories categories={categories} /> : <Loader />}
     </Layout>
   )
 }
 
-const mapStateToProps = ({
-  appReducer: { isDarkMode, categories },
-}: IState) => ({
-  isDarkMode,
+const mapStateToProps = ({ appReducer: { categories } }: IState) => ({
   categories,
 })
 
 const mapDispatchToProp = (dispatch: Dispatch<AnyAction>) =>
-  bindActionCreators({ toggleDarkMode, fetchCategoriesData }, dispatch)
+  bindActionCreators({ fetchCategoriesData }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProp)(IndexPage)

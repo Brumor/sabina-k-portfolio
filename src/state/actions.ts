@@ -14,7 +14,7 @@ export const toggleDarkMode = (isDarkMode: boolean) => {
   }
 }
 const GOOGLE_SCRIPT_URL =
-  "https://script.googleusercontent.com/macros/echo?user_content_key=wHjEPsNXKbVHpEdOVj8KkJ-5pn6XT13CPaY_-9O3Bo-3QgL-ZPEEFpi6W8n93F5GxHcIWBEuGcw2QDVgznzbeadPMrIbhumym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGuL99xyZiMjD66-KTJIeKwbB9stynZPnAbZoBaw9zV8sa8fp0GWTWyMJXJRuw5OT-SnGNRr8kiy&lib=MfaMyQ5NmFoGs8LGgRtVo5hMsjtUQM4zV"
+  "https://script.google.com/macros/s/AKfycbxP_78K2uS8WKYGDtwmHqDtLEHDbGUG6Qa1DOB4hlkOjZuRgTxh/exec"
 
 export const fetchCategoriesData = () => async dispatch => {
   try {

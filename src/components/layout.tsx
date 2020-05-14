@@ -13,8 +13,10 @@ import Header from "./header"
 import "./layout.scss"
 import { IState } from "../types"
 import { connect } from "react-redux"
+import { toggleDarkMode } from "../state/actions"
+import { bindActionCreators, AnyAction, Dispatch } from "redux"
 
-const Layout = ({ children, isDarkMode }) => {
+const Layout = ({ children, isDarkMode, toggleDarkMode }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,6 +26,12 @@ const Layout = ({ children, isDarkMode }) => {
       }
     }
   `)
+
+  useEffect(() => {
+    const darkMode = JSON.parse(localStorage.getItem("darkMode"))
+
+    toggleDarkMode(darkMode as boolean)
+  })
 
   useEffect(() => {
     if (isDarkMode) {
@@ -38,13 +46,7 @@ const Layout = ({ children, isDarkMode }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div className={"content-container"}>
         <main>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>
       </div>
@@ -60,4 +62,7 @@ const mapStateToProps = ({ appReducer: { isDarkMode } }: IState) => ({
   isDarkMode,
 })
 
-export default connect(mapStateToProps)(Layout)
+const mapDispatchToProp = (dispatch: Dispatch<AnyAction>) =>
+  bindActionCreators({ toggleDarkMode }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProp)(Layout)

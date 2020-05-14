@@ -549,30 +549,6 @@ abbr[title] {
   cursor: help;
   text-decoration: none;
 }
-thead {
-  text-align: left;
-}
-td,
-th {
-  text-align: left;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  font-feature-settings: "tnum";
-  -moz-font-feature-settings: "tnum";
-  -ms-font-feature-settings: "tnum";
-  -webkit-font-feature-settings: "tnum";
-  padding-left: 0.96667rem;
-  padding-right: 0.96667rem;
-  padding-top: 0.725rem;
-  padding-bottom: calc(0.725rem - 1px);
-}
-th:first-child,
-td:first-child {
-  padding-left: 0;
-}
-th:last-child,
-td:last-child {
-  padding-right: 0;
-}
 tt,
 code {
   background-color: rgba(0, 0, 0, 0.04);
@@ -598,8 +574,18 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+.content-container {
+  margin: 0 auto;
+  padding: 0 1.0875rem 1.45rem;
+}
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .content-container {
+    margin: 0 auto;
+    padding: 0 0.25rem 1rem;
   }
 }

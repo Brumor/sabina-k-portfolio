@@ -1,3 +1,5 @@
+@import "../styles/global.scss";
+
 .loader-container {
   display: flex;
   width: 100%;
@@ -18,7 +20,7 @@
       position: absolute;
       width: 32px;
       height: 32px;
-      background: #fdd;
+      background: $secondary-color;
       animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 
       &:after,
@@ -28,7 +30,7 @@
         display: block;
         width: 32px;
         height: 32px;
-        background: #fdd;
+        background: $secondary-color;
       }
 
       &:before {
