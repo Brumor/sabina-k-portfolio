@@ -22,8 +22,8 @@ const Header = ({ siteTitle, toggleDarkMode, isDarkMode }) => (
       </h1>
     </div>
     <div className={styles.badgesContainer}>
-      <Link to="/about">About me</Link>
-      <Link to="/contact">Contact</Link>
+      <Link to="/about">Om mig</Link>
+      <Link to="/contact">Kontakt</Link>
       <a href="https://www.instagram.com/sabinakovacevic/">
         <FontAwesomeIcon
           color={isDarkMode ? "#fcfcfc" : "#414141"}
