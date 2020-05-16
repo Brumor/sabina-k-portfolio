@@ -7,38 +7,20 @@ import SEO from "../components/seo"
 import { connect } from "react-redux"
 import { fetchCategoriesData } from "../state/actions"
 import { bindActionCreators, AnyAction, Dispatch } from "redux"
-
+import Sabina from "../images/sabina.jpg"
 import styles from "./about.module.scss"
 
 interface IProps {
   categories: Category[]
   fetchCategoriesData: () => void
 }
-const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
-  const queryString = window.location.search
-  console.log(queryString)
-
-  const urlParams = new URLSearchParams(queryString)
-
-  const categoryName = urlParams.get("category")
-
-  console.log({ categoryName, categories })
-
-  useEffect(() => {
-    if (categories === null) {
-      fetchCategoriesData()
-    }
-  }, [])
-
+const Gallery: FC<IProps> = () => {
   return (
     <Layout>
       <SEO title="Sabina Kovacevic" />
       <div className={styles.container}>
         <h1>Sabina Kovacevic</h1>
-        <img
-          className={styles.aboutMeImage}
-          src="https://drive.google.com/uc?id=1Kwgz8blkVpHMsijlbAwmALVD_OKvCMH6&export=download"
-        />
+        <img className={styles.aboutMeImage} src={Sabina} />
         <h2>Jag är en stor potatis</h2>
         <p className={styles.aboutMeText}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
