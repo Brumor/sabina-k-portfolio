@@ -12,22 +12,7 @@ interface IProps {
   categories: Category[]
   fetchCategoriesData: () => void
 }
-const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
-  const queryString = window.location.search
-  console.log(queryString)
-
-  const urlParams = new URLSearchParams(queryString)
-
-  const category = urlParams.get("category")
-
-  console.log({ category, categories })
-
-  useEffect(() => {
-    if (categories === null) {
-      fetchCategoriesData()
-    }
-  }, [])
-
+const Gallery: FC<IProps> = () => {
   return (
     <Layout>
       <SEO title="Gallery" />

@@ -11,9 +11,7 @@ import styles from "./loader.module.scss"
 import { IState } from "../types"
 import { connect } from "react-redux"
 
-const Layout = ({ isDarkMode }) => {
-  console.log(styles)
-
+const Layout = () => {
   return (
     <div className={styles.loaderContainer}>
       <div className={styles.ldsHeart}>

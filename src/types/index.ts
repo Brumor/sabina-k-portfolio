@@ -1,4 +1,5 @@
 import { CombinedState } from "redux"
+export * from "./FlickrTypes"
 
 export interface PictureMetadata {
   width?: number

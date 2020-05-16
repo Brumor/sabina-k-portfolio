@@ -27,8 +27,6 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
   const urlParams = new URLSearchParams(queryString)
   const categoryName = urlParams.get("category")
 
-  console.log({ categoryName, categories })
-
   if (categories === null) {
     return (
       <Layout>

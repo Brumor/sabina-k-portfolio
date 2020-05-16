@@ -9,8 +9,6 @@ interface ICategoryCard {
 }
 
 const CategoryCard: FC<ICategoryCard> = ({ category }) => {
-  console.log({ styles })
-
   return (
     <Link
       className={styles.categoryContainer}
@@ -23,8 +21,7 @@ const CategoryCard: FC<ICategoryCard> = ({ category }) => {
             picture => picture.metadata.width > picture.metadata.height
           )[0].url
         }
-        alt="category picture"
-        loading="lazy"
+        alt={category.name}
       />
       <p className={styles.title}>{category.name}</p>
     </Link>
