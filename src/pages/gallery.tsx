@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { IState, Category } from "../types"
 
 import Layout from "../components/layout"
@@ -17,15 +17,15 @@ interface IProps {
 }
 
 const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
+  const [categoryName, setCategoryName] = useState<string>("")
   useEffect(() => {
     if (categories === null) {
       fetchCategoriesData()
     }
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+    setCategoryName(urlParams.get("category"))
   }, [])
-
-  const queryString = window.location.search
-  const urlParams = new URLSearchParams(queryString)
-  const categoryName = urlParams.get("category")
 
   if (categories === null) {
     return (

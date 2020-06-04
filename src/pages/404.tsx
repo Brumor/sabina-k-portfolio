@@ -6,12 +6,17 @@ import { navigate } from "gatsby"
 
 const NotFoundPage = () => {
   useEffect(() => {
-    const location = window.location.pathname
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
-    const categoryName = urlParams.get("category")
-    if (location.split("/").indexOf("gallery") !== -1 && categoryName !== "") {
-      navigate(`/`)
+    if (window) {
+      const location = window.location.pathname
+      const queryString = window.location.search
+      const urlParams = new URLSearchParams(queryString)
+      const categoryName = urlParams.get("category")
+      if (
+        location.split("/").indexOf("gallery") !== -1 &&
+        categoryName !== ""
+      ) {
+        navigate(`/`)
+      }
     }
   }, [])
 
