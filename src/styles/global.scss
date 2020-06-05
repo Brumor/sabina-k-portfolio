@@ -12,36 +12,38 @@ $breakpoint-tablet: 900px;
 $breakpoint-phone: 600px;
 
 html {
-  body.body-light {
-    background: $base-background-light;
-    color: $text-light;
-    a {
+  body {
+    &.body-light {
+      background: $base-background-light;
       color: $text-light;
+      a {
+        color: $text-light;
+      }
     }
-  }
 
-  body.body-dark {
-    background: $base-background-dark;
-    color: $text-dark;
-    a {
+    &.body-dark {
+      background: $base-background-dark;
       color: $text-dark;
+      a {
+        color: $text-dark;
+      }
     }
-  }
+    a {
+      text-decoration: none;
+      transition: 0.5s;
 
-  a {
-    text-decoration: none;
-    transition: 0.5s;
+      &:hover {
+        opacity: 0.7;
+        color: $secondary-color;
+      }
 
-    &:hover {
-      opacity: 0.5;
+      &:active {
+        opacity: 1;
+        transform: scale(1.05);
+      }
     }
-
-    &:active {
-      opacity: 1;
-      transform: scale(1.05);
+    * {
+      font-family: Raleway;
     }
-  }
-  * {
-    font-family: Raleway;
   }
 }

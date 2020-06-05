@@ -18,6 +18,8 @@ interface IProps {
 
 const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
   const [categoryName, setCategoryName] = useState<string>("")
+  const [hasWindow, setHasWindow] = useState<boolean>(false)
+
   useEffect(() => {
     if (categories === null) {
       fetchCategoriesData()
@@ -25,6 +27,7 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
     setCategoryName(urlParams.get("category"))
+    setHasWindow(true)
   }, [])
 
   if (categories === null) {
@@ -39,8 +42,10 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
     category => category.name === categoryName
   )[0]
 
-  if (!category) {
+  if (!category && hasWindow) {
     return <NotFoundPage />
+  } else if (!hasWindow) {
+    return <Loader />
   }
 
   return (
