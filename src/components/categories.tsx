@@ -12,7 +12,7 @@ const CategoryCard: FC<ICategoryCard> = ({ category }) => {
   return (
     <Link
       className={styles.categoryContainer}
-      to={`gallery?category=${category.name}`}
+      to={`/gallery?category=${encodeURIComponent(category.name)}`}
     >
       <img
         className={styles.backgroundPicture}
@@ -36,7 +36,7 @@ const Categories: FC<ICategories> = ({ categories }) => {
   return (
     <div className={styles.container}>
       {categories.map(category => (
-        <CategoryCard category={category} />
+        <CategoryCard key={category.name} category={category} />
       ))}
     </div>
   )

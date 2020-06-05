@@ -8,11 +8,13 @@
     color: white;
     max-height: 56vw;
     overflow: hidden;
-    margin: 2rem 0px;
+    margin: 0px 0px;
     .background-picture {
       width: 100%;
       height: min-content;
       max-height: inherit;
+      object-fit: cover;
+      object-position: center;
     }
 
     .title {
@@ -24,7 +26,7 @@
       font-weight: 600;
       font-size: 1.9rem;
       border: 2px white solid;
-      padding: 0.8rem;
+      padding: 14px;
       text-shadow: 1px 1px $base-background-dark;
       transition: 0.5s;
     }
@@ -40,6 +42,14 @@
       .title {
         transform: translate(-50%, -50%) scale(1.1);
       }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+  .container {
+    .category-container {
+      margin: 5px 0px;
     }
   }
 }
