@@ -13,3 +13,8 @@
 .about-me-text {
   max-width: 700px;
 }
+
+.about-me-text a {
+  cursor: pointer;
+  text-decoration: underline;
+}
