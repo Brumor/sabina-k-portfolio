@@ -7,6 +7,8 @@ import SEO from "../components/seo"
 import { connect } from "react-redux"
 import { fetchCategoriesData } from "../state/actions"
 import { bindActionCreators, AnyAction, Dispatch } from "redux"
+import Sabina from "../images/sabina_contact.jpg"
+import styles from "./about.module.scss"
 
 interface IProps {
   categories: Category[]
@@ -15,10 +17,25 @@ interface IProps {
 const Gallery: FC<IProps> = () => {
   return (
     <Layout>
-      <SEO title="Gallery" />
-      <h1>Hi from the second page</h1>
-      <p>Welcome to page 2</p>
-      <Link to="/">Go back to the homepage</Link>
+      <SEO title="Contact Sabina Kovacevic" />
+      <div className={styles.container}>
+        <img className={styles.aboutMeImage} src={Sabina} />
+        <p className={styles.aboutMeText}>
+          Vill du ha en porträttfotografering? Behöver du en fotograf för ett
+          evenemang eller en konsert? Ska du gifta dig? Behöver du nya bilder
+          för ditt företag? Vad än ditt ärende gäller, tveka inte att kontakta
+          mig och fråga! Baserat på hur mycket arbete det kommer bli och hur
+          många bilder som ska levereras så föreslår jag ett pris till dig.
+          <br />
+          <br />
+          Mail:{" "}
+          <a href="mailto:sabina.kovacevic18@gmail.com">
+            sabina.kovacevic18@gmail.com
+          </a>
+          <br />
+          Telefon: <a href="tel:070-364 85 05">070-364 85 05</a>
+        </p>
+      </div>
     </Layout>
   )
 }
