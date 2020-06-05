@@ -48,7 +48,6 @@ const Layout = ({ children, isDarkMode, toggleDarkMode }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className={"content-container"}>
         <main>{children}</main>
-        <footer>© {new Date().getFullYear()}</footer>
       </div>
     </>
   )
