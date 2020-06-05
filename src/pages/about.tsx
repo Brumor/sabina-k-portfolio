@@ -43,8 +43,8 @@ const Gallery: FC<IProps> = () => {
           Men egentligen, så länge jag har en kamera och ett motiv så är jag
           nöjd! Jag kan tänka mig att fota allt, och om du tycker om mitt
           bildspråk och är intresserad så tveka inte att höra av dig! Klicka in
-          på <Link to="/gallery?category=Porträtt">kontaktsidan</Link> så hittar
-          du alla mina uppgifter där.
+          på <Link to="/contact">kontaktsidan</Link> så hittar du alla mina
+          uppgifter där.
         </p>
       </div>
     </Layout>
