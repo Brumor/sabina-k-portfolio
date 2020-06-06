@@ -56,8 +56,6 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
     for (let i = 0; i < number; i++) {
       const column = pictures.slice(part_length * i, part_length * (i + 1))
 
-      console.log(part_length * i)
-
       columns.push(column)
     }
 
