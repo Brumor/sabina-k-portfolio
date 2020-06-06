@@ -86,8 +86,8 @@ const Gallery: FC<IProps> = ({
       <SEO title="Gallery" />
       <h1 style={{ textAlign: "center" }}>{category.name}</h1>
       <div className={styles.container}>
-        {pictureColumns.map(column => (
-          <div className={styles.column}>
+        {pictureColumns.map((column, index) => (
+          <div key={index} className={styles.column}>
             {column.map(picture => (
               <GalleryImage key={picture.name} picture={picture} />
             ))}
