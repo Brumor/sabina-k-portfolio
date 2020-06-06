@@ -1,8 +1,7 @@
-.image {
-  margin: 0px;
-  align-self: flex-start;
-}
+@import "../styles/global.scss";
 
-.image-portrait {
-  grid-row: span 2 / auto;
+.image {
+  margin: $image-spacing-gallery;
+  vertical-align: middle;
+  width: 100%;
 }

@@ -8,14 +8,7 @@ interface IGalleryImage {
 }
 
 const GalleryImage: FC<IGalleryImage> = ({ picture }) => {
-  const isPortrait = picture.metadata.height > picture.metadata.width
-
-  return (
-    <img
-      src={picture.url}
-      className={`${styles.image} ${isPortrait && styles.imagePortrait}`}
-    />
-  )
+  return <img src={picture.url} className={`${styles.image}`} />
 }
 
 export default GalleryImage

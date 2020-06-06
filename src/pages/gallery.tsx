@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
-import { IState, Category } from "../types"
+import { IState, Category, Picture } from "../types"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -48,13 +48,36 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
     return <Loader />
   }
 
+  const getColumns = (pictures: Picture[], number: number): Picture[][] => {
+    const part_length = Math.ceil(pictures.length / number)
+
+    const columns = []
+
+    for (let i = 0; i < number; i++) {
+      const column = pictures.slice(part_length * i, part_length * (i + 1))
+
+      console.log(part_length * i)
+
+      columns.push(column)
+    }
+
+    return columns
+  }
+  const pictureColumns = getColumns(category.pictures, 2)
+
+  console.log(pictureColumns)
+
   return (
     <Layout>
       <SEO title="Gallery" />
       <h1 style={{ textAlign: "center" }}>{category.name}</h1>
       <div className={styles.container}>
-        {category.pictures.map(picture => (
-          <GalleryImage picture={picture} />
+        {pictureColumns.map(column => (
+          <div className={styles.column}>
+            {column.map(picture => (
+              <GalleryImage picture={picture} />
+            ))}
+          </div>
         ))}
       </div>
     </Layout>
