@@ -63,8 +63,6 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
   }
   const pictureColumns = getColumns(category.pictures, 2)
 
-  console.log(pictureColumns)
-
   return (
     <Layout>
       <SEO title="Gallery" />
