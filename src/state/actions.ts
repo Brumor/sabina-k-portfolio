@@ -3,6 +3,7 @@ import {
   PhotoSetListResponse,
   PhotosetDataResponse,
   PhotoSizeResponse,
+  StoredData,
 } from "./../types/index"
 import {
   TOGGLE_DARKMODE,
@@ -25,6 +26,19 @@ export const toggleDarkMode = (isDarkMode: boolean) => {
 export const fetchCategoriesData = () => async (dispatch: Dispatch) => {
   try {
     const data: Category[] = []
+    const previousStoredData: StoredData | null = JSON.parse(
+      localStorage.getItem("picture_data")
+    )
+    const dateString = previousStoredData?.timestamp || 0
+    const now = new Date().getTime()
+
+    if (now - dateString <= config.cacheTime) {
+      return dispatch({
+        type: FETCH_CATEGORIES_DATA_SUCCESS,
+        payload: previousStoredData.data,
+      })
+    }
+
     const flickr = await new Flickr(config.flickr_api_key)
     const photosetsListResponse: PhotoSetListResponse = await flickr.photosets.getList(
       {
@@ -81,6 +95,9 @@ export const fetchCategoriesData = () => async (dispatch: Dispatch) => {
     const categories = await Promise.all(getCategories)
 
     data.push(...categories)
+
+    const storedData: StoredData = { data, timestamp: new Date().getTime() }
+    localStorage.setItem("picture_data", JSON.stringify(storedData))
 
     return dispatch({
       type: FETCH_CATEGORIES_DATA_SUCCESS,

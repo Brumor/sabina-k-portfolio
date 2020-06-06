@@ -27,3 +27,8 @@ export interface AppState {
 export type IState = CombinedState<{
   appReducer: AppState
 }>
+
+export interface StoredData {
+  data: Category[]
+  timestamp: number
+}
