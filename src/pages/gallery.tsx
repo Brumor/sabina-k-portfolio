@@ -25,7 +25,6 @@ const Gallery: FC<IProps> = ({
   isLoading,
 }) => {
   const [categoryName, setCategoryName] = useState<string>("")
-  const [hasWindow, setHasWindow] = useState<boolean>(false)
 
   useEffect(() => {
     if (categories === null) {
@@ -34,7 +33,6 @@ const Gallery: FC<IProps> = ({
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
     setCategoryName(urlParams.get("category"))
-    setHasWindow(true)
   }, [fetch_error])
 
   if (fetch_error) {
@@ -60,10 +58,8 @@ const Gallery: FC<IProps> = ({
     category => category.name === categoryName
   )[0]
 
-  if (!category && hasWindow) {
+  if (!category) {
     return <NotFoundPage />
-  } else if (!category && !hasWindow) {
-    return <Loader />
   }
 
   const getColumns = (pictures: Picture[], number: number): Picture[][] => {
