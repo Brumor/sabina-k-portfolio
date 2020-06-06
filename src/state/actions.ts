@@ -9,6 +9,7 @@ import {
   TOGGLE_DARKMODE,
   FETCH_CATEGORIES_DATA_SUCCESS,
   FETCH_CATEGORIES_DATA_FAILURE,
+  FETCH_CATEGORIES_DATA,
 } from "./actionTypes"
 import Flickr from "flickr-sdk"
 import { Dispatch } from "redux"
@@ -24,6 +25,7 @@ export const toggleDarkMode = (isDarkMode: boolean) => {
 }
 
 export const fetchCategoriesData = () => async (dispatch: Dispatch) => {
+  dispatch({ type: FETCH_CATEGORIES_DATA })
   try {
     const data: Category[] = []
     const previousStoredData: StoredData | null = JSON.parse(
@@ -107,7 +109,7 @@ export const fetchCategoriesData = () => async (dispatch: Dispatch) => {
     console.error("bonk", error)
     return dispatch({
       type: FETCH_CATEGORIES_DATA_FAILURE,
-      payload: error.message,
+      payload: error.message ?? error ?? "",
     })
   }
 }

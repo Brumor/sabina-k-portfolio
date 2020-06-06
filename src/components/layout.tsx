@@ -31,7 +31,7 @@ const Layout = ({ children, isDarkMode, toggleDarkMode }) => {
     const darkMode = JSON.parse(localStorage.getItem("darkMode"))
 
     toggleDarkMode(darkMode as boolean)
-  })
+  }, [])
 
   useEffect(() => {
     if (isDarkMode) {

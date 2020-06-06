@@ -16,23 +16,44 @@ interface IProps {
   toggleDarkMode: (value: boolean) => void
   categories: Category[] | null
   isDarkMode: boolean
+  fetch_error: string | null
+  isLoading: boolean
 }
 
-const IndexPage: FC<IProps> = ({ fetchCategoriesData, categories }) => {
+const IndexPage: FC<IProps> = ({
+  fetchCategoriesData,
+  categories,
+  fetch_error,
+  isLoading,
+}) => {
   useEffect(() => {
     fetchCategoriesData()
-  }, [])
+  }, [fetch_error])
 
   return (
     <Layout>
       <SEO title="Home" />
-      {categories ? <Categories categories={categories} /> : <Loader />}
+      {categories && <Categories categories={categories} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        fetch_error && (
+          <p>
+            Error while fetching images page, try refreshing the page in a few
+            seconds; Error message: {fetch_error}
+          </p>
+        )
+      )}
     </Layout>
   )
 }
 
-const mapStateToProps = ({ appReducer: { categories } }: IState) => ({
+const mapStateToProps = ({
+  appReducer: { categories, error, isLoading },
+}: IState) => ({
   categories,
+  fetch_error: error,
+  isLoading,
 })
 
 const mapDispatchToProp = (dispatch: Dispatch<AnyAction>) =>

@@ -14,9 +14,16 @@ import GalleryImage from "../components/galleryImage"
 interface IProps {
   categories: Category[]
   fetchCategoriesData: () => void
+  fetch_error: string | null
+  isLoading: boolean
 }
 
-const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
+const Gallery: FC<IProps> = ({
+  categories,
+  fetchCategoriesData,
+  fetch_error,
+  isLoading,
+}) => {
   const [categoryName, setCategoryName] = useState<string>("")
   const [hasWindow, setHasWindow] = useState<boolean>(false)
 
@@ -28,9 +35,20 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
     const urlParams = new URLSearchParams(queryString)
     setCategoryName(urlParams.get("category"))
     setHasWindow(true)
-  }, [])
+  }, [fetch_error])
 
-  if (categories === null) {
+  if (fetch_error) {
+    return (
+      <Layout>
+        <p>
+          Error while fetching images page, try refreshing the page in a few
+          seconds; Error message: {fetch_error}
+        </p>
+      </Layout>
+    )
+  }
+
+  if (isLoading || categories === null) {
     return (
       <Layout>
         <Loader />
@@ -44,7 +62,7 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
 
   if (!category && hasWindow) {
     return <NotFoundPage />
-  } else if (!hasWindow) {
+  } else if (!category && !hasWindow) {
     return <Loader />
   }
 
@@ -71,7 +89,7 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
         {pictureColumns.map(column => (
           <div className={styles.column}>
             {column.map(picture => (
-              <GalleryImage picture={picture} />
+              <GalleryImage key={picture.name} picture={picture} />
             ))}
           </div>
         ))}
@@ -80,8 +98,12 @@ const Gallery: FC<IProps> = ({ categories, fetchCategoriesData }) => {
   )
 }
 
-const mapStateToProps = ({ appReducer: { categories } }: IState) => ({
+const mapStateToProps = ({
+  appReducer: { categories, error, isLoading },
+}: IState) => ({
   categories,
+  fetch_error: error,
+  isLoading,
 })
 
 const mapDispatchToProp = (dispatch: Dispatch<AnyAction>) =>
