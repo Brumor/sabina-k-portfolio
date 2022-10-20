@@ -30,15 +30,6 @@ const Header = ({ siteTitle, toggleDarkMode, isDarkMode }) => {
         </h1>
       </div>
       <div className={styles.badgesContainer}>
-        <Link to="/about">Om mig</Link>
-        <Link to="/contact">Kontakt</Link>
-        <a href="https://www.instagram.com/sabinakovacevic/">
-          <FontAwesomeIcon
-            color={isDarkMode ? "#fcfcfc" : "#414141"}
-            style={{ width: isMobile ? 20 : 35, height: "auto" }}
-            icon={["fab", "instagram"]}
-          />
-        </a>
         <a onClick={() => toggleDarkMode(!isDarkMode)}>
           {isDarkMode ? (
             <FontAwesomeIcon
